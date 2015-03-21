@@ -1,0 +1,36 @@
+{
+  "builders": [
+    {
+        "type": "docker",
+        "image": "ubuntu:14.04.2",
+        "commit": true,
+        "pull": true
+    }
+  ],
+
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "hubot",
+      "destination": "/tmp"
+    },
+    {
+      "type": "file",
+      "source": "supervisor",
+      "destination": "/tmp"
+    },
+    {
+      "type": "file",
+      "source": "hubot-runner.sh",
+      "destination": "/tmp/hubot-runner.sh"
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/setup-base-system.sh",
+        "scripts/install-hubot.sh",
+        "scripts/configure-supervisor.sh"
+      ]
+    }
+  ]
+}
