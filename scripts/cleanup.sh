@@ -3,9 +3,9 @@ set -e
 
 # clean apt caches
 apt-get clean
-rm -f /var/lib/apt/lists/*
+find /var/lib/apt/lists/ -type f -exec rm -f {} \;
 
-rm -f /tmp/hubot
+rm -rf /tmp/hubot
 if [ -d /tmp/supervisor ]; then
-  rm -f /tmp/supervisor
+  rm -rf /tmp/supervisor
 fi
