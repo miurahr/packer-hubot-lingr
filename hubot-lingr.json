@@ -16,21 +16,39 @@
     },
     {
       "type": "file",
+      "only": ["docker"],
       "source": "supervisor",
       "destination": "/tmp"
-    },
-    {
-      "type": "file",
-      "source": "hubot-runner.sh",
-      "destination": "/tmp/hubot-runner.sh"
     },
     {
       "type": "shell",
       "scripts": [
         "scripts/setup-base-system.sh",
         "scripts/install-hubot.sh",
-        "scripts/configure-supervisor.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "only": ["docker"],
+      "scripts": [
+        "scripts/install-supervisor.sh"
+      ]
+    },
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/cleanup.sh",
       ]
     }
+  ],
+
+  "post-processors": [
+    {
+    "type": "docker-tag",
+    "only": ["docker"],
+    "repository": "miurahr/hubot-lingr",
+    "tag": "latest"
+    }
   ]
+
 }
