@@ -24,7 +24,7 @@
       "type": "shell",
       "scripts": [
         "scripts/setup-base-system.sh",
-        "scripts/install-hubot.sh",
+        "scripts/install-hubot.sh"
       ]
     },
     {
