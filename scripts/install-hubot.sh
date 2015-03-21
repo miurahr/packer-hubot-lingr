@@ -9,7 +9,7 @@ npm install -g mime@1.2.11 qs@0.4.2 coffee-script@1.6.3 faye ntwitter
 
 wget -O /tmp/hubot.zip https://github.com/github/hubot/archive/v${HVER}.zip && unzip -d /srv /tmp/hubot.zip && rm /tmp/hubot.zip 
 mkdir -p /${HROOT}/hubot/bin
-install /tmp/hubot/packages.json ${HROOT}/hubot/packages.json
+install /tmp/hubot/package.json ${HROOT}/hubot/package.json
 
 git clone https://github.com/miyagawa/hubot-lingr.git       ${HROOT}/hubot/node_modules/hubot-lingr
 git clone https://github.com/hubot-scripts/hubot-trello.git ${HROOT}/hubot/node_modules/hubot-trello
