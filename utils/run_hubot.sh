@@ -1,11 +1,10 @@
 #!/bin/sh
 
-# please update following variables before use
-# lingr configurations: http://lingr.com/developer
-# trello configurations: 
+base=$(dirname $0)
+. $base/hubot-lingr.cf
 
-sudo docker run -d -p 22 -p 80 -e "HUBOT_LINGR_BOT=bot_id" -e "HUBOT_LINGR_SECRET=secret" \
-  -e "HUBOT_TRELLO_KEY=key" -e "HUBOT_TRELLO_TOKEN=token" -e "HUBOT_TRELLO_BOARD=board_id" \
+sudo docker run -d -p 22 -p 80 -e "HUBOT_LINGR_BOT=${HUBOT_LINGR_BOT}" -e "HUBOT_LINGR_SECRET=${HUBOT_LINGR_SECRET}" \
+  -e "HUBOT_TRELLO_KEY=${HUBOT_TRELLO_KEY}" -e "HUBOT_TRELLO_TOKEN=${HUBOT_TRELLO_TOKEN}" -e "HUBOT_TRELLO_BOARD=${HUBOT_TRELLO_BOARD}" \
   miurahr/hubot-lingr /usr/bin/hubot-runner
 
 DPID=`sudo docker ps -q -l`
